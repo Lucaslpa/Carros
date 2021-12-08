@@ -16,29 +16,18 @@ import { useRoleProvider } from 'contexts/role';
 import { CarView } from 'pages/user/CarView';
 import { CarsList } from 'pages/user/CarsList';
 import { getSession } from 'utils/session/getSession';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Routes() {
-  const { role, setRole } = useRoleProvider();
+  const { role } = useRoleProvider();
 
-  function recoverSession() {
-    if (!role[0]) {
-      const session = getSession();
-      if (session) {
-        setRole(session.client.roles);
-      }
-    }
-  }
-
-  useEffect(() => {
-    recoverSession();
-  }, [role]);
+ 
 
   return (
     <Router>
       <Switch>
         <Route path="/" element={<Login />} />
-        {role[0] === 'ROLE_ADMIN' && (
+        {(role[0] || getSession()?.client.roles[0]) === 'ROLE_ADMIN' && (
           <Route path="/" element={<AdmTemplate />}>
             <Route path="Cars" element={<Carros />} />
             <Route path="ChangeCar/:id" element={<ChangeCar />} />
@@ -48,7 +37,7 @@ export function Routes() {
             <Route path="ChangeCar" element={<ChangeCar />} />
           </Route>
         )}
-        {role[0] === 'ROLE_USER' && (
+        {(role[0] || getSession()?.client.roles[0]) === 'ROLE_USER' && (
           <>
             <Route path="/Cars" element={<CarsList />} />
             <Route path="/Car/:id" element={<CarView />}></Route>

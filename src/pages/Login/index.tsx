@@ -60,7 +60,7 @@ export const Login = () => {
     setRole(() => loginResponse.roles);
     if (loginResponse.roles[0] === 'ROLE_ADMIN') {
       setLoading(false);
-      Navigate('/Home');
+      Navigate('Home');
       return;
     }
     if (loginResponse.roles[0] === 'ROLE_USER') {
