@@ -1,0 +1,30 @@
+export const Theme = {
+  spaces: {
+    medium: '4.0rem',
+  },
+  radius: '0.6rem',
+  fonts: {
+    xxSmall: '1.3rem',
+    xSmall: '1.5rem',
+    small: '1.7rem',
+    medium: '2rem',
+    big: '2.2rem',
+    xBig: '3rem',
+    xxBig: '3.7rem',
+    xxxBig: '4rem',
+    xxxxBig: '4.4rem',
+    bigger: '6.5rem',
+  },
+  colors: {
+    primary: '#093866',
+    primaryLight: '#094885',
+    secondary: '#f5f5f5',
+    secondaryDark: '#d1d1d1',
+    blue: '#1fa3f0',
+    white: '#FFFFFF',
+    black: '#0C0C0C',
+    grayDark: '#7B7B7B',
+    grayLight: '#E5E5E5',
+    orange: '#FF9900',
+  },
+};
