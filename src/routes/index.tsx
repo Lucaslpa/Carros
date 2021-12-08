@@ -42,7 +42,24 @@ export function Routes() {
           </>
         )}
 
-        <Route path="*" element={<div>sadd</div>} />
+        <Route
+          path="*"
+          element={
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                width: '100%',
+              }}
+            >
+              <strong style={{ fontSize: '2.3rem' }}>
+                Error 404: Page not found
+              </strong>
+            </div>
+          }
+        />
       </Switch>
     </Router>
   );
