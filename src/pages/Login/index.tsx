@@ -1,7 +1,7 @@
 import * as S from './style';
 import { Input } from '../../components/Input';
 import { ButtonCustom } from '../../components/Button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ValidatePassword } from '../../utils/validatePassword';
 import { Modal } from '../../components/Modal';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ export const Login = () => {
   const [password, setPassword] = useState({ content: '', error: false });
   const [modal, setModal] = useState({ message: '', open: false });
   const [loading, setLoading] = useState(false);
-  const { role, setRole } = useRoleProvider();
+  const { setRole } = useRoleProvider();
   const Navigate = useNavigate();
 
   const handleValidateForm = () => {
@@ -57,7 +57,7 @@ export const Login = () => {
       return;
     }
     saveSession(loginResponse);
-    setRole((prev) => loginResponse.roles);
+    setRole(() => loginResponse.roles);
     if (loginResponse.roles[0] === 'ROLE_ADMIN') {
       setLoading(false);
       Navigate('/Home');
@@ -117,7 +117,7 @@ export const Login = () => {
               <span>Manter logado</span>
               <input type="checkBox" />
             </div>
-            <a>Esqueci a senha</a>
+            <a href="">Esqueci a senha</a>
           </div>
 
           <ButtonCustom
@@ -131,9 +131,9 @@ export const Login = () => {
 
           <S.CreateAccount>
             <span>Ainda não cadastrado ?</span>
-            <a> Crie uma conta </a>
+            <a href=""> Crie uma conta </a>
           </S.CreateAccount>
-          <a>Ajuda</a>
+          <a href="">Ajuda</a>
         </S.Form>
       </S.Wrapper>
     </S.Container>

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export function useClickOutside(
   ref: React.MutableRefObject<any>,

@@ -1,4 +1,4 @@
-import { Button, LinkCustom } from './style';
+import { Button } from './style';
 import { Spinner } from '../spinner/style';
 
 export type props = {

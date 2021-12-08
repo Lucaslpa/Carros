@@ -1,9 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
-
-export const LinkCustom = styled(Link)`
-width: 100%;
-`
 
 type buttonProps = {
   color: 'light' | 'dark';

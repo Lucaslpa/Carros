@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Container = styled(Link)`
   display: flex;
