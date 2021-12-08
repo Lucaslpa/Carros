@@ -42,7 +42,7 @@ export function Routes() {
           </>
         )}
 
-        <Route path="*" element={<div></div>} />
+        <Route path="*" element={<div>sadd</div>} />
       </Switch>
     </Router>
   );
