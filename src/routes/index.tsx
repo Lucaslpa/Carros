@@ -21,8 +21,6 @@ import { useEffect, useState } from 'react';
 export function Routes() {
   const { role } = useRoleProvider();
 
- 
-
   return (
     <Router>
       <Switch>
@@ -43,6 +41,8 @@ export function Routes() {
             <Route path="/Car/:id" element={<CarView />}></Route>
           </>
         )}
+
+        <Route path="*" element={<div></div>} />
       </Switch>
     </Router>
   );
