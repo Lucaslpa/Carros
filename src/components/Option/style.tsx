@@ -17,7 +17,8 @@ export const Container = styled(Link)`
   }
   ${({ theme }) => css`
     svg {
-      width: 14%;
+      width: 100%;
+      max-width: 3rem;
       fill: ${theme.colors.primary};
     }
     background-color: ${theme.colors.secondary};
