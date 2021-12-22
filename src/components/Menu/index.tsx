@@ -4,6 +4,7 @@ import { useClickOutside } from '../../hooks/handleClickOutside';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeSession } from 'utils/session/removeSession';
 import { client } from 'types/client';
+import {useRoleProvider} from 'contexts/role'
 
 export const Menu = ({
   isUser,
@@ -17,6 +18,7 @@ export const Menu = ({
   const [isOpen, setIsOpen] = useState(false);
   const Menu = useRef<HTMLElement>(null);
   const Navigate = useNavigate();
+  const {setRole} = useRoleProvider()
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -25,6 +27,7 @@ export const Menu = ({
 
   const handleLogout = () => {
     removeSession();
+    setRole([''])
     Navigate('/');
   };
 
