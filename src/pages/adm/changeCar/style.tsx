@@ -4,11 +4,14 @@ import media from 'styled-media-query';
 export const MyDataContainer = styled.div`
   width: 100%;
   height: 100%;
-`;
+  display: flex; 
+  justify-content: center; 
+`; 
 
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  max-width: 120rem;  
   height: 100%;
   padding: 2rem;
   > *:first-child {
@@ -20,7 +23,7 @@ export const Form = styled.form`
   padding: 2.5rem;
   width: 100%;
   min-width: 32rem;
-  max-width: 100%;
+  
   height: 40rem;
   -webkit-box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.35);
   box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.35);

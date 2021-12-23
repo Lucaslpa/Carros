@@ -8,3 +8,5 @@ export type vehicle = {
   latitude: string;
   longitude: string;
 };
+
+

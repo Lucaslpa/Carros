@@ -6,15 +6,18 @@ import { getVehicles } from 'services/getVehicles';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from 'components/spinner/style';
 
+
 export const Carros = () => {
   const { vehicles, setVehicles } = useVehiclesContext();
   const [loading, setLoading] = useState(true);
   const Navigate = useNavigate();
-  useEffect(() => {
-    if (vehicles.length === 0) {
+
+  function getVehiclesFromApi() {
+ if (!vehicles.length) {
       setLoading(true);
       getVehicles().then((data) => {
-        if (data && 'length' in data) {
+        const dataExist = data && 'length' in data
+        if (dataExist) {
           setVehicles(data);
           setLoading(false);
           return;
@@ -25,6 +28,13 @@ export const Carros = () => {
     } else {
       setLoading(false);
     }
+  }
+
+  
+
+
+  useEffect(() => {
+   getVehiclesFromApi()
   }, []);
 
   return (

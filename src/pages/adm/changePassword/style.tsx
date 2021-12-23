@@ -4,12 +4,14 @@ import media from 'styled-media-query';
 export const Container = styled.div`
   width: 100%;
   height: 100%;
+   display: flex; 
+  justify-content: center; 
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
-
+ max-width: 120rem;
   height: 100%;
   padding: 2rem;
   justify-content: center;

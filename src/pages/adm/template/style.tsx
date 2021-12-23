@@ -6,6 +6,8 @@ export const Container = styled.div`
   overflow: hidden;
   main {
     display: flex;
+    width: 100%; 
+    justify-content: center;
     height: 90%;
   }
 `;

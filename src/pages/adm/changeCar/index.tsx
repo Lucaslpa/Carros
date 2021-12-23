@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { vehicle } from 'types/vehicle';
 import { getVehicles } from 'services/getVehicles';
 import { useNavigate } from 'react-router-dom';
+import { updateVehicle as Update } from 'services/updateVehicles';
+
 
 export const ChangeCar = () => {
   const [vehicle, setVehicle] = useState<vehicle>({
@@ -23,11 +25,18 @@ export const ChangeCar = () => {
   const { id } = useParams();
   const { vehicles } = useVehiclesContext();
   const navigate = useNavigate();
-  useEffect(() => {
-    const vehicle = vehicles.find((v) => v.id === Number(id));
+
+  async function updateVehicle() {
+    if(!vehicle.id) return 
+     await Update(vehicle)
+  }
+
+  function getVehicle() {
+ const vehicle = vehicles.find((v) => v.id === Number(id));
     if (!vehicle || typeof vehicle === 'undefined') {
       getVehicles(Number(id)).then((vehicle) => {
-        if (!vehicle || 'length' in vehicle) {
+        const vehicleNotFound = !vehicle || 'length' in vehicle
+        if (vehicleNotFound) {
           navigate('/');
           return;
         }
@@ -36,6 +45,10 @@ export const ChangeCar = () => {
       return;
     }
     setVehicle(vehicle);
+  }
+
+  useEffect(() => {
+   getVehicle()
   }, [id]);
 
   return (
@@ -44,12 +57,17 @@ export const ChangeCar = () => {
         <S.ImageContainer>
           <img alt="Vehicle" src={vehicle.urlFoto} />
         </S.ImageContainer>
-        <S.Form>
+        <S.Form onSubmit={(e) => {
+                e.preventDefault();
+                updateVehicle()
+              }}>
           <S.Types>
             <S.Title>Tipo </S.Title>
             {carTypes.map((type) => (
               <S.Type key={type}>
-                <input type="radio" id={type} name="type" value={type} />
+                <input type="radio"  id={type} name="type" value={type}
+                 onChange={(e) => setVehicle({ ...vehicle, tipo: e.target.value })}
+                 checked={type.toLowerCase() === vehicle.tipo.toLowerCase() && true || false }/>
                 <label htmlFor={type}>{type}</label>
               </S.Type>
             ))}
@@ -59,14 +77,18 @@ export const ChangeCar = () => {
             placeholder=""
             type="text"
             value={vehicle.nome}
-            onChange={() => {}}
+            onChange={(e) => {
+              setVehicle({ ...vehicle, nome: e.target.value })
+            }}
           />{' '}
           <Input
             name="Descrição"
             placeholder=""
             type="text"
             value={vehicle.descricao}
-            onChange={() => {}}
+            onChange={(e) => {
+              setVehicle({ ...vehicle, descricao: e.target.value })
+            }}
           />{' '}
           <S.ButtonsContainer>
             <ButtonCustom

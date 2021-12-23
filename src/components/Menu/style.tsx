@@ -23,6 +23,7 @@ export const MenuContainer = styled.menu<{ isUser: boolean }>`
     color: white;
     ${isUser && isUserStyle}
   `}
+  z-index: 1000;
 `;
 
 export const AdmProfile = styled.div`
@@ -62,6 +63,7 @@ export const AdmMenu = styled.nav<{ open: boolean }>`
   border-radius: 0.5rem;
   -webkit-box-shadow: 3px 5px 18px 0px rgba(51, 51, 51, 0.6);
   box-shadow: 3px 5px 18px 0px rgba(51, 51, 51, 0.6);
+   z-index: 1000;
   ul {
     list-style: none;
     li {
